@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>linux用户管理/目录结构/文件系统 | 刘军</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="刘骏翔">
+  
+  <meta name="description" content="用户管理（超级管理员身份） root    /    默认密码（重置密码） 使用root登录到ubuntu系统中 1）创建新用户 ​    $ adduser    用户名称 ​    过程： ​        新建组，组名与用户名保持一致 ​            /etc/group        保存了组信息 ​        新建用户，并且将用户放到刚刚新建的组中 ​">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux用户管理&#x2F;目录结构&#x2F;文件系统">
+<meta property="og:url" content="https://ljx1106234349.github.io/2019/08/12/linux/index.html">
+<meta property="og:site_name" content="刘军">
+<meta property="og:description" content="用户管理（超级管理员身份） root    /    默认密码（重置密码） 使用root登录到ubuntu系统中 1）创建新用户 ​    $ adduser    用户名称 ​    过程： ​        新建组，组名与用户名保持一致 ​            /etc/group        保存了组信息 ​        新建用户，并且将用户放到刚刚新建的组中 ​">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-16T01:35:46.773Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux用户管理&#x2F;目录结构&#x2F;文件系统">
+<meta name="twitter:description" content="用户管理（超级管理员身份） root    /    默认密码（重置密码） 使用root登录到ubuntu系统中 1）创建新用户 ​    $ adduser    用户名称 ​    过程： ​        新建组，组名与用户名保持一致 ​            /etc/group        保存了组信息 ​        新建用户，并且将用户放到刚刚新建的组中 ​">
+  
+  
+    <link rel="icon" href="/dhtb.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">LiuJun&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/头像01.jpg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        LiuJun&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 WEB 开发的大学生
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-linux" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      linux用户管理/目录结构/文件系统
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-08-12
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <ol>
+<li><p>用户管理（超级管理员身份）</p>
+<p>root    /    默认密码（重置密码）</p>
+<p>使用root登录到ubuntu系统中</p>
+<p><strong>1）创建新用户</strong></p>
+<p>​    $ adduser    用户名称</p>
+<p>​    过程：</p>
+<p>​        新建组，组名与用户名保持一致</p>
+<p>​            /etc/group        保存了组信息</p>
+<p>​        新建用户，并且将用户放到刚刚新建的组中</p>
+<p>​            /etc/passwd     保存了用户信息<br>​            /etc/shadow      保存了用户的密码信息</p>
+<p>​        创建了一个家目录 /home/xxx</p>
+<p>​            /etc/skel拷贝到用户家目录</p>
+<p><strong>2）删除用户</strong></p>
+<p>​        $    userdel -r zhangsan<br>​            删除用户信息，并且将用户家目录也给删除</p>
+<p><strong>3）切换用户</strong></p>
+<p>​        $ su -</p>
+<p><strong>4）修改用户</strong></p>
+<p>​        $    userdel -r zhangsan</p>
+<p>​        删除用户信息，并且将用户家目录也删除</p>
+<p><strong>5） 修改组信息</strong></p>
+<p>​        $    groupmod</p>
+<p>​        $    groupmod -n group14 boss</p>
+</li>
+<li><p>Linux目录结构</p>
+<p>/</p>
+<p>​    /home    普通用户家目录</p>
+<p>​        zhangsan</p>
+<p>​        lisi</p>
+<p>​            默认情况下，普通用户只能在家目录中进行更新操作（增加、删除、修改）</p>
+<p>​    /root    超级管理员的家目录</p>
+<p>​    /etc    系统配置文件目录</p>
+<p>​    /opt    第三方文件解压安装目录</p>
+<p>​    /uer    文件的默认目录</p>
+<p>​    /var    </p>
+<p>​    /sys    系统目录</p>
+<p>​    /dev</p>
+<p>​    …</p>
+</li>
+<li><p>文件系统</p>
+<p>1）新建目录</p>
+<p>​    $    mkdir linux group14</p>
+<p>​    $    mkdir -p day01/a/b/c</p>
+<p>2）新建文件/修改最近访问时间</p>
+<p>​    $    touch    文件名</p>
+<p>​        如果指定文件名不存在，创建该文件。如果存在，修改最近访问时间为当前时间</p>
+<p>3）拷贝文件或者目录</p>
+<p>​    $    cp a.txt a.txt.bak</p>
+<p>​    $    cp -r dir1 dir2</p>
+<p>4）链接</p>
+<p>​    创建硬链接（防止误删除，多个指针指向同一个inode）</p>
+<p>​    $    In a.txt a.txt.h</p>
+<p>​    创建软连接（快捷方式）</p>
+<p>​    $    In -s a.txt a.txt.h</p>
+<p>5）移动</p>
+<p>​    $    mv a.* dir1</p>
+<p>​    $    mv a b</p>
+<p>6）删除</p>
+<p>​    $    rm a.txt</p>
+<p>​    $    rm -r dir2</p>
+<p>​    $    rmdir        只能删除空目录</p>
+<p>7）重定向</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;</span><br><span class="line">&gt;&gt; </span><br><span class="line">$ date &gt; a.txt</span><br><span class="line">$ date &gt;&gt; a.txt</span><br><span class="line">$ more /etc/passwd &gt; b.txt</span><br><span class="line">$ ls -l /etc &gt; c.txt</span><br></pre></td></tr></table></figure>
+
+<p>8）压缩与解压缩</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">1. 压缩</span><br><span class="line">	.gz 	gzip 	压缩</span><br><span class="line">	.bz2 	bzip2	压缩</span><br><span class="line">	.zip 	zip		打包压缩</span><br><span class="line">				</span><br><span class="line">	$ gzip a.txt 	</span><br><span class="line">		=&gt; a.txt.gz</span><br><span class="line"></span><br><span class="line">	$ bzip2 a.txt</span><br><span class="line">		=&gt; a.txt.bz2 </span><br><span class="line">				</span><br><span class="line">	$ zip all.zip *.txt</span><br><span class="line">		=&gt; all.zip 	(a.txt b.txt c.txt)</span><br><span class="line">2. 解压缩</span><br><span class="line">	$ gunzip a.txt.gz</span><br><span class="line">		=&gt; a.txt</span><br><span class="line"></span><br><span class="line">	$ bunzip2 a.txt.bz3</span><br><span class="line">		=&gt; a.txt</span><br><span class="line"></span><br><span class="line">	$ unzip all.zip</span><br><span class="line">		=&gt; a.txt b.txt c.txt</span><br><span class="line"></span><br><span class="line">	$ unzip all.zip -d dir2</span><br><span class="line">		=&gt; dir2/a.txt b.txt c.txt</span><br><span class="line">3. 归档</span><br><span class="line">	tar	</span><br><span class="line">		-c 	创建归档文件</span><br><span class="line">		-x 	拆档</span><br><span class="line">		-v 	打印细节</span><br><span class="line">		-f 	指定归档/拆档文件</span><br><span class="line">		-j 	bzip2格式 	xxx.tar.bz2</span><br><span class="line">		-z 	gzip格式 	xxx.tar.gz</span><br><span class="line"></span><br><span class="line">	$ tar cvf all.tar *.txt</span><br><span class="line">	$ tar cvzf all.tar.gz *.txt	(gzip)</span><br><span class="line">	$ tar cvjf all.tar.bz2 *.txt (bzip2)</span><br><span class="line">			</span><br><span class="line">4. 拆档</span><br><span class="line">	$ tar xvf all.tar.gz</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="4">
+<li>其他命令</li>
+</ol>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年08月16日 09:35</p>
+        <p>原始链接： <a class="post-url" href="/2019/08/12/linux/" title="linux用户管理/目录结构/文件系统">https://ljx1106234349.github.io/2019/08/12/linux/</a></p>
+        <footer>
+            <a href="https://ljx1106234349.github.io">
+                <img src="/images/头像01.jpg" alt="刘军">
+                刘军
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/weixin.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/weixin.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/zhifubao.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ljx1106234349.github.io/2019/08/12/linux/&title=《linux用户管理/目录结构/文件系统》 — 刘军&pic=https://ljx1106234349.github.ioimages/头像01.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ljx1106234349.github.io/2019/08/12/linux/&title=《linux用户管理/目录结构/文件系统》 — 刘军&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ljx1106234349.github.io/2019/08/12/linux/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《linux用户管理/目录结构/文件系统》 — 刘军&url=https://ljx1106234349.github.io/2019/08/12/linux/&via=https://ljx1106234349.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ljx1106234349.github.io/2019/08/12/linux/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://ljx1106234349.github.io/2019/08/12/linux/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/笔记/" class="color3">笔记</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2019/11/08/vue/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          vue
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/08/07/SVN/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">SVN/CSS动画/变形/媒体查询</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2020 刘军<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://ljx1106234349.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Ajax/" style="font-size: 10px;">-Ajax</a> <a href="/tags/axios/" style="font-size: 10px;">-axios</a> <a href="/tags/watch/" style="font-size: 10px;">-watch</a> <a href="/tags/介绍-双向数据绑定-组件注册/" style="font-size: 10px;">-介绍 -双向数据绑定 -组件注册</a> <a href="/tags/表格-进度条/" style="font-size: 10px;">-表格 -进度条</a> <a href="/tags/代码/" style="font-size: 16.67px;">代码</a> <a href="/tags/博客搭建步骤总结/" style="font-size: 10px;">博客搭建步骤总结</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a> <a href="/tags/练习/" style="font-size: 13.33px;">练习</a> <a href="/tags/脑图/" style="font-size: 10px;">脑图</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Ajax/" style="font-size: 10px;">-Ajax</a> <a href="/tags/axios/" style="font-size: 10px;">-axios</a> <a href="/tags/watch/" style="font-size: 10px;">-watch</a> <a href="/tags/介绍-双向数据绑定-组件注册/" style="font-size: 10px;">-介绍 -双向数据绑定 -组件注册</a> <a href="/tags/表格-进度条/" style="font-size: 10px;">-表格 -进度条</a> <a href="/tags/代码/" style="font-size: 16.67px;">代码</a> <a href="/tags/博客搭建步骤总结/" style="font-size: 10px;">博客搭建步骤总结</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a> <a href="/tags/练习/" style="font-size: 13.33px;">练习</a> <a href="/tags/脑图/" style="font-size: 10px;">脑图</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

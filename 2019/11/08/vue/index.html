@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>vue | 刘军</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="刘骏翔">
+  
+  <meta name="description" content="vue是什么？有哪些特点？如何理解MVVM模式Vue.js是一套构建用户界面的渐进式框架，Vue 采用自下向上增量开发的设计，其核心库只关注视图层，易于上手，同时vue完全有能力驱动采用单文件组件和 Vue 生态系统支持的库开发的复杂单页应用 特点1.数据绑定：vue会根据对应的元素，进行设置元素数据，通过输入框，以及get获取数据等多种方式进行数据的实时绑定，进行网页及应用的数据渲染 。 2.组">
+<meta name="keywords" content="-介绍 -双向数据绑定 -组件注册">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue">
+<meta property="og:url" content="https://ljx1106234349.github.io/2019/11/08/vue/index.html">
+<meta property="og:site_name" content="刘军">
+<meta property="og:description" content="vue是什么？有哪些特点？如何理解MVVM模式Vue.js是一套构建用户界面的渐进式框架，Vue 采用自下向上增量开发的设计，其核心库只关注视图层，易于上手，同时vue完全有能力驱动采用单文件组件和 Vue 生态系统支持的库开发的复杂单页应用 特点1.数据绑定：vue会根据对应的元素，进行设置元素数据，通过输入框，以及get获取数据等多种方式进行数据的实时绑定，进行网页及应用的数据渲染 。 2.组">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-08T08:30:36.436Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue">
+<meta name="twitter:description" content="vue是什么？有哪些特点？如何理解MVVM模式Vue.js是一套构建用户界面的渐进式框架，Vue 采用自下向上增量开发的设计，其核心库只关注视图层，易于上手，同时vue完全有能力驱动采用单文件组件和 Vue 生态系统支持的库开发的复杂单页应用 特点1.数据绑定：vue会根据对应的元素，进行设置元素数据，通过输入框，以及get获取数据等多种方式进行数据的实时绑定，进行网页及应用的数据渲染 。 2.组">
+  
+  
+    <link rel="icon" href="/dhtb.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">LiuJun&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/头像01.jpg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        LiuJun&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 WEB 开发的大学生
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-vue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      vue
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-11-08
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="vue是什么？有哪些特点？如何理解MVVM模式"><a href="#vue是什么？有哪些特点？如何理解MVVM模式" class="headerlink" title="vue是什么？有哪些特点？如何理解MVVM模式"></a>vue是什么？有哪些特点？如何理解MVVM模式</h3><p>Vue.js是一套构建用户界面的渐进式框架，Vue 采用自下向上增量开发的设计，其核心库只关注视图层，易于上手，同时vue完全有能力驱动采用单文件组件和 Vue 生态系统支持的库开发的复杂单页应用</p>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><p>1.数据绑定：vue会根据对应的元素，进行设置元素数据，通过输入框，以及get获取数据等多种方式进行数据的实时绑定，进行网页及应用的数据渲染 。</p>
+<p>2.组件式开发：通过vue的模块封装，它可以将一个web开发中设计的各种模块进行拆分，变成单独的组件，然后通过数据绑定，调用对应模版组件，同时传入参数，即可完成对整个项目的开发</p>
+<p>model：数据模型，view：视图，viewModel连接两个，使数据和视图结合</p>
+<h3 id="vue双向数据绑定的原理是什么，如何实现？"><a href="#vue双向数据绑定的原理是什么，如何实现？" class="headerlink" title="vue双向数据绑定的原理是什么，如何实现？"></a>vue双向数据绑定的原理是什么，如何实现？</h3><p>vue.js 是采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty()来劫持各个属性的setter，getter，再数据变动时发布消息给订阅者，触发相应的监听回调。</p>
+<p>具体步骤：</p>
+<ol>
+<li><p>需要observe的数据对象进行递归遍历，包括子属性对象的属性，都加上setter和getter；这样的话，给这个对象的某个值赋值，就会触发setter，那么就能监听到了数据变化</p>
+</li>
+<li><p>compile解析模板指令，将模板中的变量替换成数据，然后初始化渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，一旦数据有变动，收到通知，更新视图</p>
+</li>
+<li><p>Watcher订阅者时Observer和Compile之间的通信桥梁，主要做的事情是：</p>
+<ul>
+<li>在自身实例化时往属性订阅器（dep）里面添加自己</li>
+<li>自身必须有一个update()方法</li>
+<li>待属性变动dep.notice()通知时，能调用自身的update()方法，并触发Compile中绑定的回调，则功成身退。</li>
+</ul>
+</li>
+<li><p>MVVM作为数据绑定的入口，整合Observer,Compile和Watcher三者，通过Observer来监听自己的model数据变化，通过Compile来解析编译模板指令，最终利用Watcher搭起Observer和Compile之间的通信桥梁，打到数据变化–&gt;视图更新；视图监护变化（input）–&gt;数据model变更的双向绑定效果</p>
+</li>
+</ol>
+<h3 id="vue组件，组件的封装过程"><a href="#vue组件，组件的封装过程" class="headerlink" title="vue组件，组件的封装过程"></a>vue组件，组件的封装过程</h3>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月08日 16:30</p>
+        <p>原始链接： <a class="post-url" href="/2019/11/08/vue/" title="vue">https://ljx1106234349.github.io/2019/11/08/vue/</a></p>
+        <footer>
+            <a href="https://ljx1106234349.github.io">
+                <img src="/images/头像01.jpg" alt="刘军">
+                刘军
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/weixin.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/weixin.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/zhifubao.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ljx1106234349.github.io/2019/11/08/vue/&title=《vue》 — 刘军&pic=https://ljx1106234349.github.ioimages/头像01.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ljx1106234349.github.io/2019/11/08/vue/&title=《vue》 — 刘军&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ljx1106234349.github.io/2019/11/08/vue/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue》 — 刘军&url=https://ljx1106234349.github.io/2019/11/08/vue/&via=https://ljx1106234349.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ljx1106234349.github.io/2019/11/08/vue/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://ljx1106234349.github.io/2019/11/08/vue/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/-介绍-双向数据绑定-组件注册/" class="color3">-介绍 -双向数据绑定 -组件注册</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vue是什么？有哪些特点？如何理解MVVM模式"><span class="post-toc-text">vue是什么？有哪些特点？如何理解MVVM模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#特点"><span class="post-toc-text">特点</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vue双向数据绑定的原理是什么，如何实现？"><span class="post-toc-text">vue双向数据绑定的原理是什么，如何实现？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vue组件，组件的封装过程"><span class="post-toc-text">vue组件，组件的封装过程</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/11/08/Ajax/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Ajax
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/08/12/linux/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">linux用户管理/目录结构/文件系统</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2020 刘军<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://ljx1106234349.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Ajax/" style="font-size: 10px;">-Ajax</a> <a href="/tags/axios/" style="font-size: 10px;">-axios</a> <a href="/tags/watch/" style="font-size: 10px;">-watch</a> <a href="/tags/介绍-双向数据绑定-组件注册/" style="font-size: 10px;">-介绍 -双向数据绑定 -组件注册</a> <a href="/tags/表格-进度条/" style="font-size: 10px;">-表格 -进度条</a> <a href="/tags/代码/" style="font-size: 16.67px;">代码</a> <a href="/tags/博客搭建步骤总结/" style="font-size: 10px;">博客搭建步骤总结</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a> <a href="/tags/练习/" style="font-size: 13.33px;">练习</a> <a href="/tags/脑图/" style="font-size: 10px;">脑图</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Ajax/" style="font-size: 10px;">-Ajax</a> <a href="/tags/axios/" style="font-size: 10px;">-axios</a> <a href="/tags/watch/" style="font-size: 10px;">-watch</a> <a href="/tags/介绍-双向数据绑定-组件注册/" style="font-size: 10px;">-介绍 -双向数据绑定 -组件注册</a> <a href="/tags/表格-进度条/" style="font-size: 10px;">-表格 -进度条</a> <a href="/tags/代码/" style="font-size: 16.67px;">代码</a> <a href="/tags/博客搭建步骤总结/" style="font-size: 10px;">博客搭建步骤总结</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a> <a href="/tags/练习/" style="font-size: 13.33px;">练习</a> <a href="/tags/脑图/" style="font-size: 10px;">脑图</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
